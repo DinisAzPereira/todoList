@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100VH;
+    min-width: 100VH;
+    margin: 0;
+
+}
+
+.container {
+    display: flex;
+}
+
+.addProject {
+    width: 80px;
+    height: 65px;
+}
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  brown;
+        ;
+    min-width: 20%;
+    border-right: 4px solid black;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.leftTitle {
+    font-family: 'Times New Roman', Times, serif;
+
+    font-size: 2rem;
+    text-align: center;
+    padding: 20px;
+    color: burlywood;
+}
+
+.addProject {
+    font-family: 'Times New Roman', Times, serif;
+    border: 2.5px solid black;
+    background-color: burlywood;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 20px;
+    padding: 15px;
+}
+.rightContainer {
+    background-color: burlywood;
+    width: 80%;
+
+
+}

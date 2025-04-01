@@ -1,4 +1,4 @@
-// task.js
+
 export class Task {
     constructor(title, description, duedate, priority) {
         this.title = title;

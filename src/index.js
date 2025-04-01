@@ -1,4 +1,5 @@
 import { Task, Project } from './task.js'; // Importa a classe Task e Project
+import "./styles.css";
 
 const taskModal = document.getElementById('taskModal');
 const addTaskButton = document.querySelector(".addTaskButton")

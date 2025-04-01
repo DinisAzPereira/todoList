@@ -7,58 +7,67 @@
 </head>
 <body>
     <div class="container">
-        <div class="taskContainer">
-            <button class="addTaskButton">Adicionar Tarefa</button>
-            <button class="addProject">Adicionar Projeto</button>
+      <div class="leftContainer">
+        <div class="leftTitle"> Meus Projetos</div>
+        <button class="addProject">Adicionar Projeto</button>
+        <div class="projectList">
+            
+      </div>
+      </div>
+      <div class="rightContainer">
+        <button class="addTaskButton">Adicionar Tarefa</button>
 
-            <!-- Modal para adicionar tarefa -->
-            <dialog close id="taskModal">
-                <form method="dialog">
-                    <section>
-                        <p>
-                            <label for="taskTitle">Título:</label>
-                            <input type="text" id="taskTitle" name="title" placeholder="Digite o título da tarefa" required />
-                        </p>
-                        <p>
-                            <label for="taskDescription">Descrição:</label>
-                            <textarea id="taskDescription" name="description" placeholder="Descreva a tarefa" rows="3" required></textarea>
-                        </p>
-                        <p>
-                            <label for="taskDate">Data:</label>
-                            <input type="date" id="taskDate" name="date" required />
-                        </p>
-                        <p>
-                            <label for="taskProperty">Prioridade:</label>
-                            <select id="opcoes" name="opcoes">
-                                <option value="Alta">Alta</option>
-                                <option value="Media">Média</option>
-                                <option value="Baixa">Baixa</option>
-                            </select>
-                        </p>
-                    </section>
-                    <menu>
-                        <button id="cancel" type="reset">Cancelar</button>
-                        <button class="submitButton" type="submit">Confirmar</button>
-                    </menu>
-                </form>
-            </dialog>
-
-            <!-- Modal para adicionar projeto -->
-            <dialog close id="projectModal">
-                <form method="dialog">
-                    <section>
-                        <p>
-                            <label for="projectName">Nome do Projeto:</label>
-                            <input type="text" id="projectName" name="name" placeholder="Digite o nome do projeto" required />
-                        </p>
-                    </section>
-                    <menu>
-                        <button id="cancel" type="reset">Cancelar</button>
-                        <button class="submitButton2" type="submit">Confirmar</button>
-                    </menu>
-                </form>
-            </dialog>
-        </div>
+      </div>
+        
     </div>
+    <div class="taskContainer">
+      <!-- Modal para adicionar tarefa -->
+      <dialog close id="taskModal">
+          <form method="dialog">
+              <section>
+                  <p>
+                      <label for="taskTitle">Título:</label>
+                      <input type="text" id="taskTitle" name="title" placeholder="Digite o título da tarefa" required />
+                  </p>
+                  <p>
+                      <label for="taskDescription">Descrição:</label>
+                      <textarea id="taskDescription" name="description" placeholder="Descreva a tarefa" rows="3" required></textarea>
+                  </p>
+                  <p>
+                      <label for="taskDate">Data:</label>
+                      <input type="date" id="taskDate" name="date" required />
+                  </p>
+                  <p>
+                      <label for="taskProperty">Prioridade:</label>
+                      <select id="opcoes" name="opcoes">
+                          <option value="Alta">Alta</option>
+                          <option value="Media">Média</option>
+                          <option value="Baixa">Baixa</option>
+                      </select>
+                  </p>
+              </section>
+              <menu>
+                  <button id="cancel" type="reset">Cancelar</button>
+                  <button class="submitButton" type="submit">Confirmar</button>
+              </menu>
+          </form>
+      </dialog>
+
+      <!-- Modal para adicionar projeto -->
+      <dialog close id="projectModal">
+          <form method="dialog">
+              <section>
+                  <p>
+                      <label for="projectName">Nome do Projeto:</label>
+                      <input type="text" id="projectName" name="name" placeholder="Digite o nome do projeto" required />
+                  </p>
+              </section>
+              <menu>
+                  <button id="cancel" type="reset">Cancelar</button>
+                  <button class="submitButton2" type="submit">Confirmar</button>
+              </menu>
+          </form>
+      </dialog>
+  </div>
 </body>
 </html>
