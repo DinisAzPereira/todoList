@@ -24,11 +24,17 @@ export class Task {
 export class Project {
     constructor(title,) {
         this.title = title;
+        this.tasks = [];
        
     }
 
     getProject() {
         return `${this.title}`;
+    }
+
+    addTask(task) {
+        this.tasks.push(task); // Adiciona a tarefa ao array de tarefas
+        return this.tasks;     // Retorna o array atualizado (opcional)
     }
 
     

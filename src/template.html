@@ -10,13 +10,29 @@
       <div class="leftContainer">
         <div class="leftTitle"> Meus Projetos</div>
         <button class="addProject">Adicionar Projeto</button>
+
         <div class="projectList">
-            
+         
+
       </div>
       </div>
       <div class="rightContainer">
         <button class="addTaskButton">Adicionar Tarefa</button>
 
+        <div class="taskList">
+          <div class="taskItem">
+            <h1> Nome da Tarefa</h1>
+
+            <div class="rightElements">
+            <select id="completeOptions" name="opcoes">
+              <option value="Complete">Completa</option>
+              <option value="Incomplete">Incompleta</option>
+              
+          </select>
+            <button>Delete</button>
+          </div>
+          </div>
+        </div>
       </div>
         
     </div>
@@ -40,14 +56,14 @@
                   <p>
                       <label for="taskProperty">Prioridade:</label>
                       <select id="opcoes" name="opcoes">
-                          <option value="Alta">Alta</option>
-                          <option value="Media">Média</option>
-                          <option value="Baixa">Baixa</option>
+                          <option id="priorityOption" value="Alta">Alta</option>
+                          <option id="priorityOption" value="Media">Média</option>
+                          <option id="priorityOption" value="Baixa">Baixa</option>
                       </select>
                   </p>
               </section>
               <menu>
-                  <button id="cancel" type="reset">Cancelar</button>
+                  <button id="cancelTaskButton" type="reset">Cancelar</button>
                   <button class="submitButton" type="submit">Confirmar</button>
               </menu>
           </form>
@@ -63,7 +79,7 @@
                   </p>
               </section>
               <menu>
-                  <button id="cancel" type="reset">Cancelar</button>
+                  <button id="cancelProjectButton" type="reset">Cancelar</button>
                   <button class="submitButton2" type="submit">Confirmar</button>
               </menu>
           </form>
