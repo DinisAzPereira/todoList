@@ -1,3 +1,6 @@
+export const projects = [];
+
+
 
 export class Task {
     constructor(title, description, duedate, priority) {
@@ -21,7 +24,9 @@ export class Task {
     }
 }
 
+
 export class Project {
+    
     constructor(title,) {
         this.title = title;
         this.tasks = [];

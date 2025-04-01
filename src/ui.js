@@ -1,6 +1,7 @@
 export function addProjectToList(title){
     const projectList = document.querySelector(".projectList");
-    const projectName = document.createElement("h1");
+    const projectName = document.createElement("button");
+    
 
     projectName.textContent = title;
     projectList.appendChild(projectName);

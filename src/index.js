@@ -1,4 +1,4 @@
-import { Task, Project } from './task.js'; // Importa a classe Task e Project
+import { Task, Project, projects } from './task.js'; // Importa a classe Task e Project
 import { addProjectToList, addTaskToList } from './ui.js';
 import "./styles.css";
 
@@ -37,9 +37,11 @@ function addProject () {
   const projectNameInput = document.getElementById("projectName").value;
 
   const newProject = new Project(projectNameInput)
-
+  projects.push(newProject); 
   console.log("Aqui esta o teu projeto fresquinho: ", newProject);
   addProjectToList(projectNameInput);
+
+  console.log("aqui estao os projetos", projects )
 
 }
 
