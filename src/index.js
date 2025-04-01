@@ -51,10 +51,16 @@ function addTask () {
   const taskDescription = document.getElementById("taskDescription").value;
   const taskDate = document.getElementById("taskDate").value;
   const priorityOption = document.getElementById("priorityOption").value;
+  const addTaskButtonValue = document.querySelector(".addTaskButton").dataset.title.value;
+
+
+  const result = projects.find(({ title }) => title === addTaskButtonValue);
+
 
   const newTask = new Task(taskTitle, taskDescription, taskDate, priorityOption); 
   addTaskToList(taskTitle);
   console.log(newTask);
+  console.log("aqui esta o resultado", result)
 
 }
 

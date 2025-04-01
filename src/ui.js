@@ -1,8 +1,9 @@
 export function addProjectToList(title){
     const projectList = document.querySelector(".projectList");
     const projectName = document.createElement("button");
-    
+    const addTaskButton = document.querySelector(".addTaskButton");
 
+    addTaskButton.dataset.title = title;
     projectName.textContent = title;
     projectList.appendChild(projectName);
 
