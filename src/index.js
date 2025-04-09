@@ -1,5 +1,5 @@
 import { Task, Project, projects } from './task.js'; // Importa a classe Task e Project
-import { addProjectToList, addTaskToList } from './ui.js';
+import { addProjectToList, addTaskToList, wipeTaskContainer } from './ui.js';
 import "./styles.css";
 
 const taskModal = document.getElementById('taskModal');
@@ -51,14 +51,17 @@ function addTask () {
   const taskDescription = document.getElementById("taskDescription").value;
   const taskDate = document.getElementById("taskDate").value;
   const priorityOption = document.getElementById("priorityOption").value;
-  const addTaskButtonValue = document.querySelector(".addTaskButton").dataset.title.value;
+  const addTaskButtonValue = addTaskButton.dataset.title;
 
 
   const result = projects.find(({ title }) => title === addTaskButtonValue);
-
+    
+  console.log("Aqui esta o result", result)
+  console.log("Aqui esta o taskButtonValue", addTaskButtonValue); 
 
   const newTask = new Task(taskTitle, taskDescription, taskDate, priorityOption); 
-  addTaskToList(taskTitle);
+  result.addTask(newTask);
+  addTaskToList(taskTitle); // ui
   console.log(newTask);
   console.log("aqui esta o resultado", result)
 
@@ -96,3 +99,6 @@ cancelTaskButton.addEventListener("click", () => {
 cancelProjectButton.addEventListener("click", () => {
   closeProjectModal();
 })
+
+
+

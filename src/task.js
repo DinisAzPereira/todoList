@@ -42,5 +42,8 @@ export class Project {
         return this.tasks;     // Retorna o array atualizado (opcional)
     }
 
+    getTasks() {
+        return this.tasks;
+    }
     
 }

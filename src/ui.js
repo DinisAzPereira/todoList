@@ -1,3 +1,8 @@
+
+import {projects } from './task.js'; // Importa a classe Task e Project
+
+const taskList = document.querySelector(".taskList");
+
 export function addProjectToList(title){
     const projectList = document.querySelector(".projectList");
     const projectName = document.createElement("button");
@@ -5,13 +10,24 @@ export function addProjectToList(title){
 
     addTaskButton.dataset.title = title;
     projectName.textContent = title;
+    projectName.classList.add("projectNameButton");
+    
     projectList.appendChild(projectName);
+    projectName.addEventListener("click", () => {
+        addTaskButton.dataset.title = title;
+        wipeTaskContainer()
+        addAllProjectTasks();
 
+      })
+      
 
 }
 
+export function wipeTaskContainer() {
+    taskList.innerHTML= "";  
+}
+
 export function addTaskToList(title){
-        const taskList = document.querySelector(".taskList");
 
         const taskItem = document.createElement("div");
         taskItem.classList.add("taskItem")
@@ -52,3 +68,13 @@ export function addTaskToList(title){
 
 }
 
+
+function addAllProjectTasks() {
+    
+    projects.forEach((task) => {
+        task.forEach((element) => {
+            addTaskToList(element.title);   
+        });
+      });
+
+}
