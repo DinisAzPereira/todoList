@@ -16,7 +16,7 @@ export function addProjectToList(title){
     projectName.addEventListener("click", () => {
         addTaskButton.dataset.title = title;
         wipeTaskContainer()
-        addAllProjectTasks();
+       addAllProjectTasks(title);
 
       })
       
@@ -69,12 +69,23 @@ export function addTaskToList(title){
 }
 
 
-function addAllProjectTasks() {
-    
-    projects.forEach((task) => {
-        task.forEach((element) => {
-            addTaskToList(element.title);   
-        });
-      });
+function addAllProjectTasks(projectTitle) {
+  
+    const result = projects.find(({ title }) => title === projectTitle); 
 
+    if (result) {
+        result.tasks.forEach(item => {
+            addTaskToList(item.title)
+                });
+
+                console.log("check aqui os projects", projects)
+
+  //  projects.forEach((title) => {
+    //    title.tasks.forEach((item) => {
+      //    console.log("AquiESTA", item.description);
+          //addTaskToList(item.title)
+        //});
+      //});
+
+}
 }
