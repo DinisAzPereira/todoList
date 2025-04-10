@@ -94,3 +94,26 @@ body {
     
 }
 
+.projectList {
+    border-top: 2px solid black;
+    margin-top: 30px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+
+}
+
+.projectNameButton {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    width: 270px;
+    height: 20px;
+    padding: 15px;
+    border: 2.5px solid burlywood;
+
+
+}
