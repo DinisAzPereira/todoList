@@ -11,6 +11,7 @@ export class Task {
         this.priority = priority;
         this.createdAt = new Date(); // Data de criação
     }
+    
 
     complete() {
         this.completed = true;
@@ -22,6 +23,10 @@ export class Task {
 
     getDetails() {
         return `${this.description} (${this.completed ? 'Concluída' : 'Pendente'}) - Criada em: ${this.createdAt.toLocaleString()}`;
+    }
+
+    changePriority(newPriority) {
+        this.priority = newPriority;
     }
 }
 

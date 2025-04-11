@@ -3,6 +3,15 @@ import {projects, removeTask } from './task.js'; // Importa a classe Task e Proj
 
 const taskList = document.querySelector(".taskList");
 
+
+function preencherEditModal(task) {
+    document.getElementById("editTaskTitle").value = task.title;
+    document.getElementById("editTaskDescription").value = task.description;
+    document.getElementById("editTaskDate").value = task.duedate;
+    document.getElementById("editTaskPriority").value = task.priority;
+  }
+
+
 export function addProjectToList(title){
     const projectList = document.querySelector(".projectList");
     const projectName = document.createElement("button");
@@ -28,11 +37,17 @@ export function wipeTaskContainer() {
 }
 
 export function addTaskToList(title){
+
+    const editTaskModal = document.getElementById("editTaskModal");
+    const taskList = document.querySelector(".taskList");
     const addTaskButton = document.querySelector(".addTaskButton")
 
 
         const taskItem = document.createElement("div");
         taskItem.classList.add("taskItem")
+        const projectTitle = addTaskButton.dataset.title;
+        const taskTitleValue = taskItem.dataset.title;
+
 
         const taskTitle = document.createElement("h1");
         taskTitle.textContent = title;
@@ -44,6 +59,14 @@ export function addTaskToList(title){
         const selectElement = document.createElement('select');
         selectElement.id = 'completeOptions'; // Define o ID do elemento
         selectElement.name = 'opcoes'; 
+
+        const changeDetails = document.createElement("button");
+        changeDetails.textContent = "change details"
+        changeDetails.classList.add("confirmChangeDetailsButton");
+        changeDetails.addEventListener("click", () => {
+            editTaskModal.showModal();
+          });
+
 
         const option1 = document.createElement('option');
         option1.value = 'Complete';           // Define o valor da opção
@@ -61,18 +84,30 @@ export function addTaskToList(title){
     taskItem.appendChild(taskTitle);
     taskItem.appendChild(rightElements);
     rightElements.appendChild(selectElement);
-
+    rightElements.appendChild(changeDetails);
     selectElement.appendChild(option1);
     selectElement.appendChild(option2);
     rightElements.appendChild(deleteButton);
 
     deleteButton.addEventListener("click", () => {
     
-        const projectTitle = addTaskButton.dataset.title;
 
-        const taskTitle = taskItem.dataset.title;
         console.log("Aqui esta o taskTitle", taskTitle);
-        removeTask(projectTitle, taskTitle);
+        removeTask(projectTitle, taskTitleValue);
+        taskItem.remove();
+        
+      
+      })
+
+      
+      changeDetails.addEventListener("click", () => {
+
+        const projectIndex = projects.find(({ title }) => title === projectTitle);     
+        const task = projectIndex.tasks.find(({ title }) => title === taskTitleValue); 
+        
+        console.log("Aqui esta o task", task);
+        //preencherEditModal(task);     
+          
         
       
       })

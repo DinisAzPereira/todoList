@@ -68,7 +68,39 @@
               </menu>
           </form>
       </dialog>
+            <!-- Modal para editar a tarefa  -->
 
+      <dialog close id="editTaskModal" class="edit-task-modal">
+        <form method="dialog">
+            <section>
+                <p>
+                    <label for="editTaskTitle">Título:</label>
+                    <input type="text" id="editTaskTitle" name="title" placeholder="Digite o título da tarefa" required />
+                </p>
+                <p>
+                    <label for="editTaskDescription">Descrição:</label>
+                    <textarea id="editTaskDescription" name="description" placeholder="Descreva a tarefa" rows="3" required></textarea>
+                </p>
+                <p>
+                    <label for="editTaskDate">Data:</label>
+                    <input type="date" id="editTaskDate" name="date" required />
+                </p>
+                <p>
+                    <label for="editTaskPriority">Prioridade:</label>
+                    <select id="editTaskPriority" name="opcoes">
+                        <option value="Alta">Alta</option>
+                        <option value="Media">Média</option>
+                        <option value="Baixa">Baixa</option>
+                    </select>
+                </p>
+            </section>
+            <menu>
+                <button id="cancelEditTaskButton" type="reset">Cancelar</button>
+                <button class="changeDetailsButton" type="submit">Change Details</button>
+            </menu>
+        </form>
+    </dialog>
+    
       <!-- Modal para adicionar projeto -->
       <dialog close id="projectModal">
           <form method="dialog">

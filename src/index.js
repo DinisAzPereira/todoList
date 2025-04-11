@@ -10,7 +10,7 @@ const projectModal = document.getElementById("projectModal");
 const submitButton2 = document.querySelector(".submitButton2");
 const cancelTaskButton = document.getElementById("cancelTaskButton");
 const cancelProjectButton = document.getElementById("cancelProjectButton");
-const deleteTaskButton = document.querySelector(".deleteTaskButton");
+
 
 
 // Função para abrir o modal
@@ -100,7 +100,6 @@ cancelTaskButton.addEventListener("click", () => {
 cancelProjectButton.addEventListener("click", () => {
   closeProjectModal();
 })
-
 
 
 
