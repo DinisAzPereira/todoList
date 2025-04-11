@@ -97,20 +97,40 @@ body {
 .projectList {
     border-top: 2px solid black;
     margin-top: 30px;
+    min-width: 100%;
 display: flex;
 flex-direction: column;
+justify-content: center;
+align-items: center;
 gap: 20px;
 
 }
 
 .projectNameButton {
+    
     margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: black;
     color: white;
-    width: 270px;
+    width: 80%;
+    height: 20px;
+    padding: 15px;
+    border: 2.5px solid burlywood;
+
+
+}
+
+.projectNameButton:hover {
+    margin-top: 15px;
+    display: flex;
+    opacity: 0.8;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    width: 80%;
     height: 20px;
     padding: 15px;
     border: 2.5px solid burlywood;

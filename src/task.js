@@ -2,6 +2,7 @@ export const projects = [];
 
 
 
+
 export class Task {
     constructor(title, description, duedate, priority) {
         this.title = title;
@@ -47,3 +48,16 @@ export class Project {
     }
     
 }
+
+    export function removeTask(projectTitle, taskTitle) {    
+        
+        
+        const projectIndex = projects.find(({ title }) => title === projectTitle);     
+        const task = projectIndex.tasks.find(({ title }) => title === taskTitle); 
+        console.log("Aqui esta o task", task);   
+        projectIndex.tasks.splice(task, 1);
+        console.log("ve se foi removido", projects)
+        return task;
+    }
+
+

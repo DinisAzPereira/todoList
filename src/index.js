@@ -1,5 +1,5 @@
-import { Task, Project, projects } from './task.js'; // Importa a classe Task e Project
-import { addProjectToList, addTaskToList, wipeTaskContainer } from './ui.js';
+import { Task, Project, projects, removeTask   } from './task.js'; // Importa a classe Task e Project
+import { addProjectToList, addTaskToList } from './ui.js';
 import "./styles.css";
 
 const taskModal = document.getElementById('taskModal');
@@ -10,6 +10,7 @@ const projectModal = document.getElementById("projectModal");
 const submitButton2 = document.querySelector(".submitButton2");
 const cancelTaskButton = document.getElementById("cancelTaskButton");
 const cancelProjectButton = document.getElementById("cancelProjectButton");
+const deleteTaskButton = document.querySelector(".deleteTaskButton");
 
 
 // Função para abrir o modal
@@ -99,6 +100,8 @@ cancelTaskButton.addEventListener("click", () => {
 cancelProjectButton.addEventListener("click", () => {
   closeProjectModal();
 })
+
+
 
 
 

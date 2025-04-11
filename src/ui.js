@@ -1,5 +1,5 @@
 
-import {projects } from './task.js'; // Importa a classe Task e Project
+import {projects, removeTask } from './task.js'; // Importa a classe Task e Project
 
 const taskList = document.querySelector(".taskList");
 
@@ -28,12 +28,15 @@ export function wipeTaskContainer() {
 }
 
 export function addTaskToList(title){
+    const addTaskButton = document.querySelector(".addTaskButton")
+
 
         const taskItem = document.createElement("div");
         taskItem.classList.add("taskItem")
 
         const taskTitle = document.createElement("h1");
         taskTitle.textContent = title;
+        taskItem.dataset.title = title; 
 
         const rightElements = document.createElement("div");
         rightElements.classList.add("rightElements");
@@ -52,6 +55,7 @@ export function addTaskToList(title){
 
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "delete"
+        deleteButton.classList.add("deleteTaskButton");
 
     taskList.appendChild(taskItem);
     taskItem.appendChild(taskTitle);
@@ -62,8 +66,16 @@ export function addTaskToList(title){
     selectElement.appendChild(option2);
     rightElements.appendChild(deleteButton);
 
+    deleteButton.addEventListener("click", () => {
+    
+        const projectTitle = addTaskButton.dataset.title;
 
-
+        const taskTitle = taskItem.dataset.title;
+        console.log("Aqui esta o taskTitle", taskTitle);
+        removeTask(projectTitle, taskTitle);
+        
+      
+      })
 
 
 }
@@ -80,12 +92,7 @@ function addAllProjectTasks(projectTitle) {
 
                 console.log("check aqui os projects", projects)
 
-  //  projects.forEach((title) => {
-    //    title.tasks.forEach((item) => {
-      //    console.log("AquiESTA", item.description);
-          //addTaskToList(item.title)
-        //});
-      //});
+
 
 }
 }
