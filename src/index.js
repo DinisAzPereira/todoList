@@ -101,6 +101,3 @@ cancelProjectButton.addEventListener("click", () => {
   closeProjectModal();
 })
 
-
-
-

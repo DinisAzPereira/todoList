@@ -1,6 +1,7 @@
 
 import {projects, removeTask } from './task.js'; // Importa a classe Task e Project
 
+
 const taskList = document.querySelector(".taskList");
 
 
@@ -11,6 +12,7 @@ function preencherEditModal(task) {
     document.getElementById("editTaskPriority").value = task.priority;
   }
 
+  
 
 export function addProjectToList(title){
     const projectList = document.querySelector(".projectList");
@@ -38,20 +40,19 @@ export function wipeTaskContainer() {
 
 export function addTaskToList(title){
 
-    const editTaskModal = document.getElementById("editTaskModal");
-    const taskList = document.querySelector(".taskList");
-    const addTaskButton = document.querySelector(".addTaskButton")
+        const editTaskModal = document.getElementById("editTaskModal");
+        const taskList = document.querySelector(".taskList");
+        const addTaskButton = document.querySelector(".addTaskButton")
 
 
         const taskItem = document.createElement("div");
         taskItem.classList.add("taskItem")
         const projectTitle = addTaskButton.dataset.title;
-        const taskTitleValue = taskItem.dataset.title;
-
 
         const taskTitle = document.createElement("h1");
         taskTitle.textContent = title;
         taskItem.dataset.title = title; 
+        const taskTitleValue = taskItem.dataset.title;
 
         const rightElements = document.createElement("div");
         rightElements.classList.add("rightElements");
@@ -60,12 +61,11 @@ export function addTaskToList(title){
         selectElement.id = 'completeOptions'; // Define o ID do elemento
         selectElement.name = 'opcoes'; 
 
-        const changeDetails = document.createElement("button");
-        changeDetails.textContent = "change details"
-        changeDetails.classList.add("confirmChangeDetailsButton");
-        changeDetails.addEventListener("click", () => {
-            editTaskModal.showModal();
-          });
+        const confirmChangeDetailsButton = document.createElement("button");
+        confirmChangeDetailsButton.textContent = "change details"
+        confirmChangeDetailsButton.classList.add("confirmChangeDetailsButton");
+
+       
 
 
         const option1 = document.createElement('option');
@@ -84,7 +84,7 @@ export function addTaskToList(title){
     taskItem.appendChild(taskTitle);
     taskItem.appendChild(rightElements);
     rightElements.appendChild(selectElement);
-    rightElements.appendChild(changeDetails);
+    rightElements.appendChild(confirmChangeDetailsButton);
     selectElement.appendChild(option1);
     selectElement.appendChild(option2);
     rightElements.appendChild(deleteButton);
@@ -99,17 +99,33 @@ export function addTaskToList(title){
       
       })
 
-      
-      changeDetails.addEventListener("click", () => {
+      const changeDetailsButton2 = document.querySelector(".changeDetailsButton");
 
-        const projectIndex = projects.find(({ title }) => title === projectTitle);     
-        const task = projectIndex.tasks.find(({ title }) => title === taskTitleValue); 
-        
+      const projectIndex = projects.find(({ title }) => title === projectTitle);     
+      const task = projectIndex.tasks.find(({ title }) => title === taskTitleValue); 
+
+      confirmChangeDetailsButton.addEventListener("click", () => {
+       
+
+        editTaskModal.showModal();
         console.log("Aqui esta o task", task);
-        //preencherEditModal(task);     
-          
-        
-      
+        preencherEditModal(task);     
+                
+      })
+      changeDetailsButton2.addEventListener("click", () => {
+       
+
+        const taskTitle = document.getElementById("editTaskTitle").value;
+        const taskDescription = document.getElementById("editTaskDescription").value;
+        const taskDate = document.getElementById("editTaskDate").value;
+        const priorityOption = document.getElementById("editTaskPriority").value;
+
+        task.updateTask(taskTitle, taskDescription, taskDate, priorityOption);
+        taskItem.remove();
+        addTaskToList(task.title);
+        editTaskModal.close(); 
+        console.log("Aqui esta o task", task);
+                
       })
 
 
