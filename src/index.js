@@ -1,5 +1,5 @@
 import { Task, Project, projects, removeTask   } from './task.js'; // Importa a classe Task e Project
-import { addProjectToList, addTaskToList } from './ui.js';
+import { addProjectToList, addTaskToList, wipeProjectContainer, addAllProjectToList } from './ui.js';
 import "./styles.css";
 
 const taskModal = document.getElementById('taskModal');
@@ -39,6 +39,8 @@ function addProject () {
 
   const newProject = new Project(projectNameInput)
   projects.push(newProject); 
+  localStorage.setItem('projects', JSON.stringify(projects));     
+
   console.log("Aqui esta o teu projeto fresquinho: ", newProject);
   addProjectToList(projectNameInput);
 
@@ -101,3 +103,7 @@ cancelProjectButton.addEventListener("click", () => {
   closeProjectModal();
 })
 
+document.addEventListener("DOMContentLoaded", (event) => {
+  wipeProjectContainer()
+  addAllProjectToList();
+});

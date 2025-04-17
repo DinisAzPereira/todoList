@@ -3,6 +3,7 @@ import {projects, removeTask } from './task.js'; // Importa a classe Task e Proj
 
 
 const taskList = document.querySelector(".taskList");
+const projectList = document.querySelector(".projectList");
 
 
 function preencherEditModal(task) {
@@ -36,6 +37,9 @@ export function addProjectToList(title){
 
 export function wipeTaskContainer() {
     taskList.innerHTML= "";  
+}
+export function wipeProjectContainer() {
+  projectList.innerHTML= "";  
 }
 
 export function addTaskToList(title){
@@ -133,6 +137,8 @@ export function addTaskToList(title){
 
 
 function addAllProjectTasks(projectTitle) {
+
+
   
     const result = projects.find(({ title }) => title === projectTitle); 
 
@@ -146,4 +152,17 @@ function addAllProjectTasks(projectTitle) {
 
 
 }
+
+
 }
+
+
+export function addAllProjectToList(){
+      const allProjects = localStorage.getItem('projects');
+      const parsedProjects = JSON.parse(allProjects); // Converte a string JSON de volta para um objeto JavaScript
+      parsedProjects.forEach(item => {
+        const projectName = item.title;
+        addProjectToList(projectName);
+      })
+    
+  }
