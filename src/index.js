@@ -1,9 +1,12 @@
-import { Task, Project, projects, removeTask   } from './task.js'; // Importa a classe Task e Project
+// index.js (refatorado)
+
+import { Project, Task } from './task.js';
 import { addProjectToList, addTaskToList, wipeProjectContainer, addAllProjectToList } from './ui.js';
+import { saveProjects, loadProjects } from './storage.js';
 import "./styles.css";
 
 const taskModal = document.getElementById('taskModal');
-const addTaskButton = document.querySelector(".addTaskButton")
+const addTaskButton = document.querySelector(".addTaskButton");
 const submitButton = document.querySelector(".submitButton");
 const addProjectButton = document.querySelector(".addProject");
 const projectModal = document.getElementById("projectModal");
@@ -11,15 +14,12 @@ const submitButton2 = document.querySelector(".submitButton2");
 const cancelTaskButton = document.getElementById("cancelTaskButton");
 const cancelProjectButton = document.getElementById("cancelProjectButton");
 
-
-
-// Função para abrir o modal
+let projects = loadProjects();
 
 function openTaskModal() {
   taskModal.showModal();
 }
 
-// Função para fechar o modal
 function closeTaskModal() {
   taskModal.close();
 }
@@ -28,82 +28,43 @@ function openProjectModal() {
   projectModal.showModal();
 }
 
-// Função para fechar o modal de projeto
 function closeProjectModal() {
   projectModal.close();
 }
 
-
-function addProject () {
+function addProject() {
   const projectNameInput = document.getElementById("projectName").value;
-
-  const newProject = new Project(projectNameInput)
-  projects.push(newProject); 
-  localStorage.setItem('projects', JSON.stringify(projects));     
-
-  console.log("Aqui esta o teu projeto fresquinho: ", newProject);
+  const newProject = new Project(projectNameInput);
+  projects.push(newProject);
+  saveProjects(projects);
   addProjectToList(projectNameInput);
-
-  console.log("aqui estao os projetos", projects )
-
 }
 
-
-function addTask () {
+function addTask() {
   const taskTitle = document.getElementById("taskTitle").value;
   const taskDescription = document.getElementById("taskDescription").value;
   const taskDate = document.getElementById("taskDate").value;
   const priorityOption = document.getElementById("priorityOption").value;
-  const addTaskButtonValue = addTaskButton.dataset.title;
+  const projectTitle = addTaskButton.dataset.title;
 
+  const project = projects.find(({ title }) => title === projectTitle);
+  if (!project) return;
 
-  const result = projects.find(({ title }) => title === addTaskButtonValue);
-    
-  console.log("Aqui esta o result", result)
-  console.log("Aqui esta o taskButtonValue", addTaskButtonValue); 
+  const newTask = new Task(taskTitle, taskDescription, taskDate, priorityOption);
+  project.addTask(newTask);
+  saveProjects(projects);
 
-  const newTask = new Task(taskTitle, taskDescription, taskDate, priorityOption); 
-  result.addTask(newTask);
-  addTaskToList(taskTitle); // ui
-  console.log(newTask);
-  console.log("aqui esta o resultado", result)
-
+  addTaskToList(taskTitle);
 }
 
-//  "Adicionar Projeto"
-addProjectButton.addEventListener("click", () => {
-  openProjectModal();
-});
+addProjectButton.addEventListener("click", openProjectModal);
+addTaskButton.addEventListener("click", openTaskModal);
+submitButton.addEventListener("click", addTask);
+submitButton2.addEventListener("click", addProject);
+cancelTaskButton.addEventListener("click", closeTaskModal);
+cancelProjectButton.addEventListener("click", closeProjectModal);
 
-//  "Adicionar Tarefa"
-
-addTaskButton.addEventListener("click", () => {
-    openTaskModal();
-  });
-
-  // botao para confirmar tarefa
-submitButton.addEventListener("click", () => {
-
-  addTask();
-})
-
-  // botao para confirmar projeto
-
-submitButton2.addEventListener("click", () => {
-
-  addProject();
-})
-
-  
-cancelTaskButton.addEventListener("click", () => {
-    closeTaskModal();
-})
-
-cancelProjectButton.addEventListener("click", () => {
-  closeProjectModal();
-})
-
-document.addEventListener("DOMContentLoaded", (event) => {
-  wipeProjectContainer()
+document.addEventListener("DOMContentLoaded", () => {
+  wipeProjectContainer();
   addAllProjectToList();
 });
