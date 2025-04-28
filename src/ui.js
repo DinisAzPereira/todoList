@@ -51,7 +51,7 @@ export function addTaskToList(title){
   if (!project) return;
 
 
-  const task = project.tasks.find(t => t.title === taskTitle);
+  const task = project.tasks.find(t => t.title === title);
   if (!task) return;
 
   const taskItem = document.createElement("div");

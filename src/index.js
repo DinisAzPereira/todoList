@@ -14,7 +14,11 @@ const submitButton2 = document.querySelector(".submitButton2");
 const cancelTaskButton = document.getElementById("cancelTaskButton");
 const cancelProjectButton = document.getElementById("cancelProjectButton");
 
-let projects = loadProjects();
+let projects = loadProjects().map(projectData => {
+  const project = new Project(projectData.title);
+  project.tasks = projectData.tasks.map(taskData => new Task(taskData.title, taskData.description, taskData.duedate, taskData.priority));
+  return project;
+});
 
 function openTaskModal() {
   taskModal.showModal();
@@ -51,6 +55,7 @@ function addTask() {
   if (!project) return;
 
   const newTask = new Task(taskTitle, taskDescription, taskDate, priorityOption);
+  console.log("new task", newTask)
   project.addTask(newTask);
   saveProjects(projects);
 
